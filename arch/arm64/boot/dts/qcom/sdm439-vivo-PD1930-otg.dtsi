@@ -1,0 +1,53 @@
+/* otg relative config for adc method*/
+
+&pm8953_mpps{
+		mpp@a100 {
+			/* MPP2 - PA_THERM config */
+			reg = <0xa100 0x100>;
+			qcom,pin-num = <2>;
+			qcom,mode = <4>; /* AIN input */
+			qcom,invert = <0>; /* Enable MPP */
+			qcom,ain-route = <1>; /* AMUX 6 */
+			qcom,master-en = <1>;
+			qcom,src-sel = <0>; /* Function constant */
+			status = "ok";
+		};
+};
+
+&pm8953_vadc{
+		chan@11 {
+			label = "usbid_vol";
+			reg = <0x11>;
+			qcom,decimation = <0>;
+			qcom,pre-div-channel-scaling = <0>;
+			qcom,calibration-type = "absolute";
+			qcom,scale-function = <0>;
+			qcom,hw-settle-time = <0>;
+			qcom,fast-avg-setup = <0>;
+		};
+};
+
+
+&usb_otg{
+		qcom,hsusb-otg-mode = <3>; 
+		vbus_otg-supply = <&smb5_vbus>;
+		qcom,usbidvol-gpio = <&tlmm 62 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&usbid_vol_default>;
+		qcom,usbidvol-vadc = <&pm8953_vadc>;
+		qcom,usbid_adc_used;
+		adc,channel_num = <0x11>;
+		qcom,hsusb-otg-phy-init-seq = <0x43 0x80 0x24 0x82 0xffffffff>;
+		qcom,hsusb-otg-phy-init-temp-seq = <0x43 0x80 0x06 0x82 0xffffffff>;
+};
+
+&usbid {
+		pins = "gpio62";
+		qcom,num-grp-pins = <1>;
+		qcom,pin-func = <0>;
+		label = "usbid-vol-pin";
+		usbid_vol_default: default {
+			drive-strength = <8>;
+			output-high;
+		};
+};

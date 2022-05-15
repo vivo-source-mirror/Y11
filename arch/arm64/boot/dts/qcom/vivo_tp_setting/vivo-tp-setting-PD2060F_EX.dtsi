@@ -1,0 +1,253 @@
+&soc {
+	tp_module1 {
+		compatible = "vivo,touch-panel-module";
+		vts-ic-number=<82>;
+		vts-type=<0>;
+		vts-lcmid=<49>;//CPD2016 0x31 BOE NT36525B
+		vts-dimention-x=<720>;
+		vts-dimention-y=<1600>;
+		vts-tx-sensors=<18>;
+		vts-rx-sensors=<32>;
+		vts-incell=<1>;
+		vts-need-caliberation=<0>;
+		vts-virtual-proximinity=<0>;
+		vts-long-press=<0>;
+		vts-module-vendor=<0xF0>;
+		vts-no-flash=<1>;
+		vts-gesture=<1>;
+		//vts-sleep-time=<50>;
+	};
+	tp_module2 {
+		compatible = "vivo,touch-panel-module";
+		vts-ic-number=<90>;
+		vts-type=<0>;
+		vts-lcmid=<17>;//0x11  ili9881 
+		vts-dimention-x=<720>;
+		vts-dimention-y=<1600>;
+		vts-tx-sensors=<18>;
+		vts-rx-sensors=<32>;
+		vts-incell=<1>;
+		vts-need-caliberation=<0>;
+		vts-virtual-proximinity=<0>;
+		vts-long-press=<0>;
+		vts-module-vendor=<0xF0>;
+		vts-no-flash=<1>;
+	};
+	tp_module3 {
+		compatible = "vivo,touch-panel-module";
+		vts-ic-number=<82>;
+		vts-type=<0>;
+		vts-lcmid=<161>;//CPD2016 0xA1 TXD NT36525B
+		vts-dimention-x=<720>;
+		vts-dimention-y=<1600>;
+		vts-tx-sensors=<18>;
+		vts-rx-sensors=<32>;
+		vts-incell=<1>;
+		vts-need-caliberation=<0>;
+		vts-virtual-proximinity=<0>;
+		vts-long-press=<0>;
+		vts-module-vendor=<0xF0>;
+		vts-no-flash=<1>;
+		vts-gesture=<1>;
+	};
+	tp_module4 {
+		compatible = "vivo,touch-panel-module";
+		vts-ic-number=<82>;
+		vts-type=<0>;
+		vts-lcmid=<177>;//CPD2016 0xb1 inx NT36525B
+		vts-dimention-x=<720>;
+		vts-dimention-y=<1600>;
+		vts-tx-sensors=<18>;
+		vts-rx-sensors=<32>;
+		vts-incell=<1>;
+		vts-need-caliberation=<0>;
+		vts-virtual-proximinity=<0>;
+		vts-long-press=<0>;
+		vts-module-vendor=<0xF0>;
+		vts-no-flash=<1>;
+		vts-gesture=<1>;
+	};
+	tp_module5 {
+		compatible = "vivo,touch-panel-module";
+		vts-ic-number=<82>;
+		vts-type=<0>;
+		vts-lcmid=<178>;//CPD2016 0xb1 inx NT36525B  G5
+		vts-dimention-x=<720>;
+		vts-dimention-y=<1600>;
+		vts-tx-sensors=<18>;
+		vts-rx-sensors=<32>;
+		vts-incell=<1>;
+		vts-need-caliberation=<0>;
+		vts-virtual-proximinity=<0>;
+		vts-long-press=<0>;
+		vts-module-vendor=<0xF0>;
+		vts-no-flash=<1>;
+		vts-gesture=<1>;
+	};
+	tp_module6 {
+		compatible = "vivo,touch-panel-module";
+		vts-ic-number=<91>;
+		vts-type=<0>;
+		vts-lcmid=<18>;//0x12   ILI9882N  
+		vts-dimention-x=<720>;
+		vts-dimention-y=<1600>;
+		vts-tx-sensors=<18>;
+		vts-rx-sensors=<32>;
+		vts-incell=<1>;
+ 		vts-need-caliberation=<0>;
+ 		vts-virtual-proximinity=<0>;
+ 		vts-long-press=<0>;
+		vts-module-vendor=<0xF0>;
+		vts-game-mode=<1>;
+		vts-gesture=<0>;
+		vts-no-flash=<1>;
+	};
+	tp_module7 {
+		compatible = "vivo,touch-panel-module";
+		vts-ic-number=<37>;
+		vts-type=<0>;
+		vts-lcmid=<65>;//0x41   8016
+		vts-dimention-x=<720>;
+		vts-dimention-y=<1600>;
+		vts-tx-sensors=<18>;
+		vts-rx-sensors=<32>;
+		vts-incell=<1>;
+ 		vts-need-caliberation=<0>;
+ 		vts-virtual-proximinity=<0>;
+ 		vts-long-press=<0>;
+		vts-module-vendor=<0xF0>;
+		vts-game-mode=<1>;
+		vts-gesture=<0>;
+		vts-no-flash=<1>;
+		//vts-report-timestamp=<1>;
+	};
+	tp_module8 {
+		compatible = "vivo,touch-panel-module";
+		vts-ic-number=<90>;
+		vts-type=<0>;
+		vts-lcmid=<19>;//0x13  ili9881 1211720 
+		vts-dimention-x=<720>;
+		vts-dimention-y=<1600>;
+		vts-tx-sensors=<18>;
+		vts-rx-sensors=<32>;
+		vts-incell=<1>;
+		vts-need-caliberation=<0>;
+		vts-virtual-proximinity=<0>;
+		vts-long-press=<0>;
+		vts-module-vendor=<0xF0>;
+		vts-no-flash=<1>;
+	};
+
+};
+
+&tlmm{
+
+			spi3_tp_default: spi3_tp_default {
+				/* active state */
+				mux {
+					/* MOSI, MISO, CLK */
+					pins = "gpio8", "gpio9", "gpio11";
+					function = "blsp_spi3";
+				};
+
+				config {
+					pins = "gpio8", "gpio9", "gpio11";
+					drive-strength = <8>; /* 8  MA */
+					bias-disable = <0>; /* No PULL */
+				};
+			};
+			spi3_cs0_tp_sleep: spi3_cs0_tp_sleep {
+				mux {
+				pins = "gpio10";
+					function = "gpio";
+				};
+
+				config {
+					pins = "gpio10";
+					drive-strength = <2>;
+					bias-disable = <0>;
+					output-high;
+				};
+			};
+
+};
+&spi_3 {
+	status = "okay";
+	qcom,rt;
+	pinctrl-0 = <&spi3_tp_default &spi3_cs0_active>;
+	pinctrl-1 = <&spi3_sleep &spi3_cs0_tp_sleep>;
+	vts_device@0 {
+		compatible = "vivo,ts-spi";
+		status = "okay";
+		reg=<0>;
+		spi-max-frequency = <9600000>;	//4800000,9600000,15000000,19200000
+		nt36675 {
+			compatible = "novatek,NVT-ts-spi-v2";
+			status = "ok";
+			vts-type=<0>;
+			vts-ic-number=<82>;
+			spi-max-frequency = <9600000>;	//4800000,9600000,15000000,19200000
+			//novatek,reset-gpio = <&tlmm 64 0x00>;
+			novatek,irq-gpio = <&tlmm 65 0x2001>;
+			//novatek,cs-gpio = <&tlmm 80 0x00>;
+			
+			sensor-test-key="com.nttouchscreen.mptest:MainActivity:android.intent.action.novatek:0:testResult";
+			lcm-noise-test-key="com.nt36xxxtouchscreen.deltadiff:MainActivity:null:null:null";
+			rawdata-test-key="com.nttouchscreen.getdata:MainActivity:null:null:null";
+			rf-noise-test-key="com.nt36xxxtouchscreen.deltadiff:BspTest:android.intent.action.nvtdeltadiff:0:testResult";
+
+			//vts-incell-panel=<&dsi_pd2034_boe_nt36525b_hdplus_video &dsi_pd2034_txd_nt36525b_hdplus_video &dsi_pd2034_inx_nt36525b_hdplus_video //&dsi_pd2034_inxg5_nt36525b_hdplus_video>;
+
+			novatek,swrst-n8-addr = <0x03F0FE>;
+		};
+		ili9881h {
+			compatible = "ilitek,ILI-ts-spi-v2";
+			status = "ok";
+			vts-type=<0>;
+			vts-ic-number=<90>;
+			spi-max-frequency = <9600000>;	//4800000,9600000,15000000,19200000
+			ilitek,reset-gpio = <&tlmm 64 0x00>;
+			ilitek,irq-gpio = <&tlmm 65 0x2001>;
+			
+			sensor-test-key="com.ilitek.touchscreen.tptest:MainActivity:com.ilitek.touchscreen.action.tptest:0:ILITEK_TpTestResult";
+			lcm-noise-test-key="com.ilitek.touchscreen.noisev2:MainActivity:null:null:null"; 
+			rawdata-test-key="com.ilitek.touchscreen.noisev2:DataShowActivity:null:null:null";
+			rf-noise-test-key="com.ilitek.touchscreen.noisev2:BspTestActivity:com.ilitek.touchscreen.action.noisetest:0:ILITEK_TpTestResult";
+			//vts-incell-panel=<&dsi_pd2034_tm_ili9881h_hdplus_video>;
+			
+		};
+		
+		ili_9882n {
+			status = "okay";
+			compatible = "tchip,ilitek";
+			vts-type=<0>;
+			vts-ic-number=<91>;
+			spi-max-frequency = <9600000>;
+			touch,reset-gpio = <&tlmm 64 0x00>;
+			touch,irq-gpio = <&tlmm 65 0x00>;
+
+			sensor-test-key="com.ilitek.touchscreen.tptest3X:MP3XActivity:com.ilitek.touchscreen.action.tptest:0:ILITEK_TpTestResult";
+			lcm-noise-test-key="com.ilitek.touchscreen.noisev2:MainActivity:null:null:null"; 
+			rawdata-test-key="com.ilitek.touchscreen.noisev2:DataShowActivity:null:null:null";
+			rf-noise-test-key="com.ilitek.touchscreen.noisev2:BspTestActivity:com.ilitek.touchscreen.action.noisetest:0:ILITEK_TpTestResult";
+			//vts-incell-panel=<&dsi_pd2034_tm_ili9882n_hdplus_video>;
+		};
+		ft8016 {
+			compatible = "focaltech,ft8756_v2";
+			vts-type=<0>;
+			vts-ic-number=<37>;
+			spi-max-frequency = <8000000>;	//4800000,9600000,15000000,19200000
+			focaltech,reset-gpio = <&tlmm 64 0x00>;
+			focaltech,irq-gpio = <&tlmm 65 0x02>;
+			focaltech,max-touch-number = <10>;
+			focaltech,display-coords = <0 0 720 1600>;
+			focaltech,ic_name = "ft8016";
+			sensor-test-key="com.focaltouchscreen.sensortest:MainActivity:com.focaltouchscreen.sensortest:0:focal_test_result";
+			lcm-noise-test-key="com.focaltech.deltadiff:MainActivity:null:null:null";
+			rawdata-test-key="com.focaltech.deltadiff:DataActivity:null:null:null";
+			rf-noise-test-key="com.focaltech.deltadiff:BspTestActivity:com.focaltech.deltadiff:0:testResult";
+			//vts-incell-panel=<&dsi_pd2034_auo_ft8016_hdplus_video>;
+			
+		};
+	};
+};

@@ -1,0 +1,25 @@
+&soc{
+	fp_id:fp_id {
+		compatible = "fp-id";
+		status = "ok";
+		vivo,project-name = "PD2060F_EX";
+		/*fp_id,gpios = <&tlmm 129 0>;
+		fp_id,gpio_vdd_en = <&tlmm 126 0>;
+		pinctrl-names = "fp_gpio_pull_up",
+						"fp_gpio_pull_down";
+		pinctrl-0 = <&fp_id_gpio_up>;
+		pinctrl-1 = <&fp_id_gpio_down>;*/
+	};
+	goodix_fp {
+		compatible = "goodix,fingerprint";
+		goodix,project-name = "PD2060F_EX";
+		goodix,gpio_reset = <&tlmm 124 0x00>;
+		goodix,gpio_irq = <&tlmm 48 0x00>;
+        //fp,vdd_use_gpio
+		//goodix,gpio_vdd_en = <&tlmm 126 0x00>;
+        fp,vdd_use_pmic;
+		vcc_spi-supply = <&pm8953_l22>;
+	};
+
+};
+

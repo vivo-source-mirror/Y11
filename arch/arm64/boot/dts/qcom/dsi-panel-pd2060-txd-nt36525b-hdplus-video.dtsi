@@ -1,0 +1,246 @@
+/* Copyright (c) 2019, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+&mdss_mdp {
+	dsi_pd2060_txd_nt36525b_hdplus_video: qcom,mdss_dsi_pd2060_txd_nt36525b_hdplus_video {
+		qcom,mdss-dsi-panel-name = "dsi_pd2060_txd_nt36525b_hdplus_video panel";
+		qcom,mdss-dsi-project-name = "pd2060";
+		qcom,mdss-dsi-panel-type = "dsi_video_mode";
+
+		qcom,dsi-ctrl-num = <0>;
+		qcom,dsi-phy-num = <0>;
+
+		qcom,mdss-dsi-virtual-channel-id = <0>;
+		qcom,mdss-dsi-stream = <0>;
+		qcom,mdss-dsi-bpp = <24>;
+		qcom,mdss-dsi-underflow-color = <0x00>;
+		qcom,mdss-dsi-border-color = <0>;
+		qcom,mdss-dsi-reset-sequence =<1 5>, <0 3>, <1 10>, <0 3>, <1 10>;
+		qcom,mdss-pan-physical-width-dimension = <68>;
+		qcom,mdss-pan-physical-height-dimension = <151>;
+		qcom,mdss-dsi-traffic-mode = "non_burst_sync_event";
+		qcom,mdss-dsi-bllp-eof-power-mode;
+		qcom,mdss-dsi-bllp-power-mode;
+		qcom,mdss-dsi-lane-0-state;
+		qcom,mdss-dsi-lane-1-state;
+		qcom,mdss-dsi-lane-2-state;
+		qcom,mdss-dsi-dma-trigger = "trigger_sw";
+		qcom,mdss-dsi-mdp-trigger = "none";
+		qcom,mdss-dsi-panel-id = <0xA1>;
+		qcom,mdss-dsi-lcmid-sequence = <0xA1 0x40>;
+		qcom,mdss-dsi-backlight-hw-id-offset = <7>;
+		qcom,mdss-dsi-lp11-init;
+		qcom,vivo-dsi-panel-type = "tft";
+		qcom,mdss-dsi-panel-physical-type = "lcd";
+		qcom,mdss-panel-sre;
+		qcom,mdss-dsi-lcm-sre-max-level = <0x08>;
+		qcom,bl-update-flag = "delay_until_first_frame";
+		qcom,esd-check-more;
+
+		qcom,mdss-dsi-on-cabc-levle1 = [
+			39 01 00 00 00 00 02 53 2C
+			39 01 00 00 00 00 02 55 01
+		];
+
+		qcom,mdss-dsi-on-cabc-levle2 = [
+			39 01 00 00 00 00 02 53 2C
+			39 01 00 00 00 00 02 55 02
+		];
+
+		qcom,mdss-dsi-on-cabc-levle3 = [
+			39 01 00 00 00 00 02 53 2C
+			39 01 00 00 00 00 02 55 03
+		];
+
+		qcom,mdss-dsi-on-cabc-off = [
+			39 01 00 00 00 00 02 53 2C
+			39 01 00 00 00 00 02 55 00
+		];
+
+		qcom,mdss-dsi-off-command = [
+			05 01 00 00 00 00 01 28
+			05 01 00 00 50 00 01 10
+		];
+
+		qcom,mdss-dsi-pre-off-command = [
+			05 01 00 00 11 00 01 28
+		];
+		qcom,mdss-dsi-pre-on-command = [
+			39 01 00 00 14 00 01 29
+		];
+
+		qcom,mdss-dsi-on-command-state = "dsi_lp_mode";
+		qcom,mdss-dsi-off-command-state = "dsi_hs_mode";
+		qcom,mdss-alpm-command-state = "dsi_hs_mode";
+
+		qcom,mdss-dsi-display-timings {
+			timing@0{
+				qcom,mdss-dsi-panel-width = <720>;
+				qcom,mdss-dsi-panel-height = <1600>;
+				qcom,mdss-dsi-h-front-porch = <40>;
+				qcom,mdss-dsi-h-back-porch = <40>;
+				qcom,mdss-dsi-h-pulse-width = <18>;
+				qcom,mdss-dsi-h-sync-skew = <0>;
+				qcom,mdss-dsi-h-sync-pulse = <0>;
+				qcom,mdss-dsi-v-back-porch = <250>;
+				qcom,mdss-dsi-v-front-porch = <12>;
+				qcom,mdss-dsi-v-pulse-width = <4>;
+				qcom,mdss-dsi-panel-framerate = <60>;
+				qcom,mdss-dsi-h-left-border = <0>;
+				qcom,mdss-dsi-h-right-border = <0>;
+				qcom,mdss-dsi-v-top-border = <0>;
+				qcom,mdss-dsi-v-bottom-border = <0>;
+				qcom,mdss-dsi-on-command =
+				[
+					/* Gamma setting */
+					 39 01 00 00 00 00 02 FF 20
+					 39 01 00 00 00 00 02 FB 01
+					 39 01 00 00 00 00 11 B0 00 76 00 7D 00 8D 00 9A 00 A6 00 B4 00 BE 00 CA
+					 39 01 00 00 00 00 11 B1 00 D4 00 F9 01 1A 01 50 01 7C 01 C5 02 04 02 06
+					 39 01 00 00 00 00 11 B2 02 43 02 89 02 B6 02 EF 03 14 03 40 03 53 03 60
+					 39 01 00 00 00 00 0D B3 03 6E 03 82 03 99 03 AF 03 CE 03 DA
+					 39 01 00 00 00 00 11 B4 00 1E 00 2A 00 3F 00 53 00 65 00 75 00 85 00 93
+					 39 01 00 00 00 00 11 B5 00 9F 00 CF 00 F8 01 37 01 69 01 B8 01 FA 01 FC
+					 39 01 00 00 00 00 11 B6 02 3B 02 82 02 AF 02 E8 03 0D 03 3C 03 4E 03 5A
+					 39 01 00 00 00 00 0D B7 03 6B 03 7F 03 96 03 AE 03 CE 03 DA
+					 39 01 00 00 00 00 11 B8 00 08 00 1A 00 31 00 46 00 5B 00 6C 00 7C 00 8D
+					 39 01 00 00 00 00 11 B9 00 9C 00 CF 00 F7 01 38 01 6B 01 B9 01 FB 01 FD
+					 39 01 00 00 00 00 11 BA 02 3C 02 83 02 B1 02 EC 03 14 03 3C 03 53 03 64
+					 39 01 00 00 00 00 0D BB 03 6B 03 7F 03 97 03 C0 03 D1 03 DA
+					 39 01 00 00 00 00 02 FF 21
+					 39 01 00 00 00 00 02 FB 01
+					 39 01 00 00 00 00 11 B0 00 6E 00 75 00 85 00 92 00 9E 00 AC 00 B6 00 C2
+					 39 01 00 00 00 00 11 B1 00 CC 00 F1 01 12 01 48 01 74 01 BD 01 FC 01 FE
+					 39 01 00 00 00 00 11 B2 02 3B 02 81 02 AE 02 E7 03 0C 03 38 03 4B 03 58
+					 39 01 00 00 00 00 0D B3 03 66 03 7A 03 91 03 A7 03 C6 03 D2
+					 39 01 00 00 00 00 11 B4 00 16 00 22 00 37 00 4B 00 5D 00 6D 00 7D 00 8B
+					 39 01 00 00 00 00 11 B5 00 97 00 C7 00 F0 01 2F 01 61 01 B0 01 F2 01 F4
+					 39 01 00 00 00 00 11 B6 02 33 02 7A 02 A7 02 E0 03 05 03 34 03 46 03 52
+					 39 01 00 00 00 00 0D B7 03 63 03 77 03 8E 03 A6 03 C6 03 D2
+					 39 01 00 00 00 00 11 B8 00 00 00 12 00 29 00 3E 00 53 00 64 00 74 00 85
+					 39 01 00 00 00 00 11 B9 00 94 00 C7 00 EF 01 30 01 63 01 B1 01 F3 01 F4
+					 39 01 00 00 00 00 11 BA 02 34 02 7B 02 A9 02 E4 03 0C 03 34 03 4B 03 5C
+					 39 01 00 00 00 00 0D BB 03 63 03 77 03 8F 03 B8 03 C9 03 D2
+
+					 /*LV detect debounce time*/
+					 39 01 00 00 01 00 02 FF F0
+
+					 39 01 00 00 00 00 02 FB 01
+					 39 01 00 00 00 00 02 CF 22
+
+					 /*sre setting*/
+					 39 01 00 00 00 00 02 FF 22
+					 39 01 00 00 00 00 02 FB 01
+					 39 01 00 00 00 00 02 1A 00
+					 39 01 00 00 00 00 02 53 00
+					 39 01 00 00 00 00 02 68 00
+					 39 01 00 00 00 00 02 56 77
+					 39 01 00 00 00 00 02 58 10
+					 39 01 00 00 00 00 02 59 10
+					 39 01 00 00 00 00 02 5E 10
+					 39 01 00 00 00 00 02 5F 10
+					 39 01 00 00 00 00 02 6A 00
+
+                     /*cabc UI mode*/
+					 39 01 00 00 00 00 02 FF 23
+					 39 01 00 00 00 00 02 FB 01
+					 39 01 00 00 00 00 02 30 FF
+					 39 01 00 00 00 00 02 31 FE
+					 39 01 00 00 00 00 02 32 EB
+					 39 01 00 00 00 00 02 33 E5
+					 39 01 00 00 00 00 02 34 DD
+					 39 01 00 00 00 00 02 35 DA
+					 39 01 00 00 00 00 02 36 D5
+					 39 01 00 00 00 00 02 37 D0
+					 39 01 00 00 00 00 02 38 CE
+					 39 01 00 00 00 00 02 39 CD
+					 39 01 00 00 00 00 02 3A CD
+					 39 01 00 00 00 00 02 3B CD
+					 39 01 00 00 00 00 02 3D CB
+					 39 01 00 00 00 00 02 3F CB
+					 39 01 00 00 00 00 02 40 C6
+					 39 01 00 00 00 00 02 41 BF
+					 39 01 00 00 00 00 02 45 FF
+					 /*Still mode*/
+					 39 01 00 00 00 00 02 46 F0
+					 39 01 00 00 00 00 02 47 E8
+					 39 01 00 00 00 00 02 48 CE
+					 39 01 00 00 00 00 02 49 BC
+					 39 01 00 00 00 00 02 4A B8
+					 39 01 00 00 00 00 02 4B B5
+					 39 01 00 00 00 00 02 4C B0
+					 39 01 00 00 00 00 02 4D A8
+					 39 01 00 00 00 00 02 4E A0
+					 39 01 00 00 00 00 02 4F 9B
+					 39 01 00 00 00 00 02 50 98
+					 39 01 00 00 00 00 02 51 98
+					 39 01 00 00 00 00 02 52 88
+					 39 01 00 00 00 00 02 53 80
+					 39 01 00 00 00 00 02 54 7F
+					 /*dimming setting*/
+					 39 01 00 00 00 00 02 04 05
+					 39 01 00 00 00 00 02 05 2D
+					 39 01 00 00 00 00 02 06 01
+					 /* 12bit brightness resolution */
+					 39 01 00 00 00 00 02 00 80
+					 /* set pwm frequency to 15KHz, 12bit bklt has different rule to calc freq with 8bit bklt*/
+					 39 01 00 00 00 00 02 07 00
+					 39 01 00 00 00 00 02 08 01
+					 /*osc -1% && vfp=12*/
+					 39 01 00 00 01 00 02 FF 25
+					 39 01 00 00 00 00 02 FB 01
+					 39 01 00 00 00 00 02 0A 82
+					 39 01 00 00 00 00 02 0B 1F
+					 39 01 00 00 00 00 02 0C 01
+
+					 39 01 00 00 01 00 02 FF 24
+					 39 01 00 00 00 00 02 FB 01
+					 39 01 00 00 00 00 02 92 B1
+					 39 01 00 00 00 00 02 B1 AD
+					 39 01 00 00 00 00 02 93 0C
+					 39 01 00 00 00 00 02 94 0C
+					 /* Sharpness setting */
+					 39 01 00 00 00 00 02 FF 10
+					 39 01 00 00 00 00 02 FB 01
+					 39 01 00 00 00 00 02 55 80
+					 39 01 00 00 00 00 02 FF 22
+					 39 01 00 00 00 00 02 FB 01
+					 39 01 00 00 00 00 02 1A 00
+					 39 01 00 00 00 00 02 53 00
+					 39 01 00 00 00 00 02 56 77
+					 39 01 00 00 00 00 02 68 01
+					 39 01 00 00 00 00 02 65 80
+					 39 01 00 00 00 00 02 66 80
+					 39 01 00 00 00 00 02 67 80
+					 /*Backlight setting*/
+					 39 01 00 00 00 00 02 FF 10
+					 39 01 00 00 00 00 02 FB 01
+					 39 01 00 00 00 00 02 35 00
+					 39 01 00 00 00 00 02 51 00
+					 39 01 00 00 00 00 03 68 03 01
+					 39 01 00 00 00 00 02 53 24
+					 /*02-3lane 03-4lane*/
+					 39 01 00 00 00 00 02 BA 02
+					 /*Sleep out&Display on*/
+					 39 01 00 00 14 00 01 29
+					 39 01 00 00 64 00 01 11
+
+				];
+
+				qcom,mdss-dsi-panel-timings-phy-12nm = [11 08 10 04 00 07 04 0C];
+				qcom,mdss-dsi-panel-timings-phy-12nm-russia = [12 09 10 05 01 07 05 0C];
+
+			};
+		};
+	};
+};
+

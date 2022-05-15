@@ -1,0 +1,45 @@
+/* Copyright (c) 2018, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+
+&tlmm {
+	/*vsen team added for rf detected*/
+	sar_power_state:sar_power_rf_detect {
+		sar_power_no_pull:sar_power_no_pull{
+			mux{
+				pins = "gpio128";
+				function = "gpio";
+			};
+
+			config{
+				pins = "gpio128";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+	};
+	/*vsen team added end*/
+};
+
+/*vsen team added for sar power start*/
+&soc {
+	/*vsen team added for sar power*/
+	sar_power: sar_power_device {
+		compatible = "sar-power";
+		interrupt-parent = <&tlmm>;
+		interrupts = <128 0x2>;
+		sar-power-rf-detect,gpios = <&tlmm 128 0>;
+		pinctrl-names = "vivoRF_detect_gpio";
+		pinctrl-0 = <&sar_power_no_pull>;
+	};
+};
+/*vsen team added for sar power end*/

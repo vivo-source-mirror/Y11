@@ -1,0 +1,39 @@
+&soc{
+	fp_id:fp_id {
+		compatible = "fp-id";
+		status = "ok";
+		vivo,project-name = "PD1930F_EX";
+		fp_id,gpios = <&tlmm 129 0>;
+		fp_id,gpio_vdd_en = <&tlmm 126 0>;
+		pinctrl-names = "fp_id_gpio_up",
+						"fp_id_gpio_down";
+		pinctrl-0 = <&fp_id_gpio_up>;
+		pinctrl-1 = <&fp_id_gpio_down>;
+	};
+	goodix_fp {
+		compatible = "goodix,fingerprint";
+		goodix,project-name = "PD1930F_EX";
+		goodix,gpio_reset = <&tlmm 124 0x00>;
+		goodix,gpio_irq = <&tlmm 48 0x00>;
+        //fp,vdd_use_gpio
+		//goodix,gpio_vdd_en = <&tlmm 126 0x00>;
+        fp,vdd_use_pmic;
+		vcc_spi-supply = <&pm8953_l10>;
+	};
+   fpc_fp {
+        compatible = "fpc,fingerprint";
+        fpc,project-name = "PD1930F_EX";
+        fpc,gpio_reset = <&tlmm 124 0x00>;
+        fpc,gpio_irq = <&tlmm 48 0x00>;
+        //fpc,gpio_vdd_en = <&tlmm 126 0x00>;
+		vdd_ana-supply  = <&pm8953_l10>;
+		fpc,enable-on-boot;
+        pinctrl-names = "fpc1020_reset_reset",
+                       "fpc1020_reset_active",
+                       "fpc1020_irq_active";
+        pinctrl-0 = <&msm_gpio_reset>;
+        pinctrl-1 = <&msm_gpio_reset_output_high>;
+        pinctrl-2 = <&msm_gpio_irq>;
+     };
+};
+

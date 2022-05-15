@@ -1,0 +1,10 @@
+/* wcn other config file , config 5g etc . */
+
+
+    &wcnss_settings {
+        qcom,has-autodetect-xo;
+    };
+
+
+
+

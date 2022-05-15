@@ -1,0 +1,242 @@
+/* Copyright (c) 2015-2019, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+#include "dsi-panel-sim-video.dtsi"
+#include "dsi-panel-sim-cmd.dtsi"
+#include "dsi-panel-truly-1080p-video.dtsi"
+#include "dsi-panel-truly-1080p-cmd.dtsi"
+#include "dsi-panel-truly-720p-video.dtsi"
+#include "dsi-panel-truly-720p-cmd.dtsi"
+#include "dsi-panel-r69006-1080p-cmd.dtsi"
+#include "dsi-panel-r69006-1080p-video.dtsi"
+#include "dsi-panel-hx8394f-720p-video.dtsi"
+#include "dsi-adv7533-1080p.dtsi"
+#include "dsi-adv7533-720p.dtsi"
+#include "dsi-panel-hx8399c-fhd-plus-video.dtsi"
+#include "dsi-panel-hx8399c-hd-plus-video.dtsi"
+#include "dsi-panel-nt35695b-truly-fhd-video.dtsi"
+#include "dsi-panel-nt35695b-truly-fhd-cmd.dtsi"
+#include "dsi-panel-icn9706-720-1440p-video.dtsi"
+#include "dsi-panel-edo-rm67162-qvga-cmd.dtsi"
+#include "dsi-panel-pd2060-boe-nt36525b-hdplus-video.dtsi"
+#include "dsi-panel-pd1930-qc-nt36525-hdplus-video.dtsi"
+#include "dsi-panel-pd1930-tianma-ft8006p-hdplus-video.dtsi"
+#include "dsi-panel-pd1930-boe-nt36525b-hdplus-video.dtsi"
+#include "dsi-panel-pd1930-boe-nt36525a-hdplus-video.dtsi"
+#include "dsi-panel-pd1930-qc-ft8006p-hdplus-video.dtsi"
+#include "dsi-panel-pd1930-auo-ft8006p-hdplus-video.dtsi"
+#include "dsi-panel-pd1930-qc-ili9881-hdplus-video.dtsi"
+#include "dsi-panel-pd1930-boe-ft8006p-hdplus-video.dtsi"
+#include "dsi-panel-pd2060-txd-nt36525b-hdplus-video.dtsi"
+#include "dsi-panel-pd2060-tm-ili9881h-hdplus-video.dtsi"
+#include "dsi-panel-pd2060-tm-ili9882n-hdplus-video.dtsi"
+
+&soc {
+	dsi_panel_pwr_supply: dsi_panel_pwr_supply {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		/*qcom,panel-supply-entry@0 {
+			reg = <0>;
+			qcom,supply-name = "vdd";
+			qcom,supply-min-voltage = <2850000>;
+			qcom,supply-max-voltage = <2850000>;
+			qcom,supply-enable-load = <100000>;
+			qcom,supply-disable-load = <100>;
+		};*/
+
+		qcom,panel-supply-entry@1 {
+			reg = <1>;
+			qcom,supply-name = "vddio";
+			qcom,supply-min-voltage = <1800000>;
+			qcom,supply-max-voltage = <1800000>;
+			qcom,supply-enable-load = <100000>;
+			qcom,supply-disable-load = <100>;
+			/*qcom,supply-post-on-sleep = <3>;*/
+			qcom,supply-post-off-sleep = <2>;
+		};
+
+		qcom,panel-supply-entry@2 {
+			reg = <2>;
+			qcom,supply-name = "lab";
+			qcom,supply-min-voltage = <4600000>;
+			qcom,supply-max-voltage = <6000000>;
+			qcom,supply-enable-load = <100000>;
+			qcom,supply-disable-load = <100>;
+			qcom,supply-post-on-sleep = <3>;
+			qcom,supply-post-off-sleep = <15>;
+		};
+
+		qcom,panel-supply-entry@3 {
+			reg = <3>;
+			qcom,supply-name = "ibb";
+			qcom,supply-min-voltage = <4600000>;
+			qcom,supply-max-voltage = <6000000>;
+			qcom,supply-enable-load = <100000>;
+			qcom,supply-disable-load = <100>;
+			qcom,supply-post-on-sleep = <5>;
+			qcom,supply-post-off-sleep = <2>;
+		};
+	};
+
+	dsi_pm660_panel_pwr_supply: dsi_pm660_panel_pwr_supply {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		qcom,panel-supply-entry@0 {
+			reg = <0>;
+			qcom,supply-name = "vdd";
+			qcom,supply-min-voltage = <2800000>;
+			qcom,supply-max-voltage = <2800000>;
+			qcom,supply-enable-load = <100000>;
+			qcom,supply-disable-load = <100>;
+		};
+
+		qcom,panel-supply-entry@1 {
+			reg = <1>;
+			qcom,supply-name = "vddio";
+			qcom,supply-min-voltage = <1800000>;
+			qcom,supply-max-voltage = <1800000>;
+			qcom,supply-enable-load = <100000>;
+			qcom,supply-disable-load = <100>;
+		};
+	};
+};
+
+&dsi_pd2060_boe_nt36525b_hdplus_video {
+	qcom,mdss-dsi-t-clk-post = <0x0C>;
+	qcom,mdss-dsi-t-clk-pre = <0x29>;
+	qcom,dsi-select-clocks = "mux_byte_clk0", "mux_pixel_clk0",
+				"src_byte_clk0", "src_pixel_clk0",
+				"shadow_byte_clk0", "shadow_pixel_clk0";
+	qcom,ulps-enabled;
+	qcom,esd-check-enabled;
+	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
+	qcom,mdss-dsi-panel-status-command = [06 01 00 01 00 00 01 0a];
+	qcom,mdss-dsi-panel-status-command-state = "dsi_hs_mode";
+	qcom,mdss-dsi-panel-status-value = <0x9c>;
+	qcom,mdss-dsi-panel-on-check-value = <0x9c>;
+	qcom,mdss-dsi-panel-status-read-length = <1>;
+	qcom,dsi-dyn-clk-enable;
+	qcom,dsi-dyn-clk-list = <732666240 722029224>;
+	qcom,dsi-dyn-clk-type = "constant-fps-adjust-hfp";
+	qcom,mdss-dsi-display-timings {
+		timing@0 {
+			qcom,mdss-dsi-panel-phy-timings = [
+				22 1e 07 08 04 02 04 a0
+				22 1e 07 08 04 02 04 a0
+				22 1e 07 08 04 02 04 a0
+				22 1e 07 08 04 02 04 a0
+				22 17 06 07 04 02 04 a0
+			];
+			qcom,display-topology = <1 0 1>;
+			qcom,default-topology-index = <0>;
+		};
+	};
+
+};
+
+&dsi_pd2060_txd_nt36525b_hdplus_video {
+	qcom,mdss-dsi-t-clk-post = <0x0C>;
+	qcom,mdss-dsi-t-clk-pre = <0x29>;
+	qcom,dsi-select-clocks = "mux_byte_clk0", "mux_pixel_clk0",
+				"src_byte_clk0", "src_pixel_clk0",
+				"shadow_byte_clk0", "shadow_pixel_clk0";
+	qcom,ulps-enabled;
+	qcom,esd-check-enabled;
+	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
+	qcom,mdss-dsi-panel-status-command = [06 01 00 01 00 00 01 0a];
+	qcom,mdss-dsi-panel-status-command-state = "dsi_hs_mode";
+	qcom,mdss-dsi-panel-status-value = <0x9c>;
+	qcom,mdss-dsi-panel-on-check-value = <0x9c>;
+	qcom,mdss-dsi-panel-status-read-length = <1>;
+	qcom,dsi-dyn-clk-enable;
+	qcom,dsi-dyn-clk-list = <732666240 722029224>;
+	qcom,dsi-dyn-clk-type = "constant-fps-adjust-hfp";
+	qcom,mdss-dsi-display-timings {
+		timing@0 {
+			qcom,mdss-dsi-panel-phy-timings = [
+				22 1e 07 08 04 02 04 a0
+				22 1e 07 08 04 02 04 a0
+				22 1e 07 08 04 02 04 a0
+				22 1e 07 08 04 02 04 a0
+				22 17 06 07 04 02 04 a0
+			];
+			qcom,display-topology = <1 0 1>;
+			qcom,default-topology-index = <0>;
+		};
+	};
+
+};
+
+
+&dsi_pd2060_tm_ili9881h_hdplus_video {
+	qcom,mdss-dsi-t-clk-post = <0x0C>;
+	qcom,mdss-dsi-t-clk-pre = <0x29>;
+	qcom,dsi-select-clocks = "mux_byte_clk0", "mux_pixel_clk0",
+				"src_byte_clk0", "src_pixel_clk0",
+				"shadow_byte_clk0", "shadow_pixel_clk0";
+	qcom,ulps-enabled;
+	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
+	qcom,mdss-dsi-panel-status-command = [06 01 00 01 00 00 01 0a];
+	qcom,mdss-dsi-panel-status-command-state = "dsi_hs_mode";
+	qcom,mdss-dsi-panel-status-value = <0x9c>;
+	qcom,mdss-dsi-panel-on-check-value = <0x9c>;
+	qcom,mdss-dsi-panel-status-read-length = <1>;
+	qcom,mdss-dsi-display-timings {
+		timing@0 {
+			qcom,mdss-dsi-panel-phy-timings = [
+				22 1e 07 08 04 02 04 a0
+				22 1e 07 08 04 02 04 a0
+				22 1e 07 08 04 02 04 a0
+				22 1e 07 08 04 02 04 a0
+				22 17 06 07 04 02 04 a0
+			];
+			qcom,display-topology = <1 0 1>;
+			qcom,default-topology-index = <0>;
+		};
+	};
+
+};
+
+&dsi_pd2060_tm_ili9882n_hdplus_video {
+	qcom,mdss-dsi-t-clk-post = <0x0C>;
+	qcom,mdss-dsi-t-clk-pre = <0x29>;
+	qcom,dsi-select-clocks = "mux_byte_clk0", "mux_pixel_clk0",
+				"src_byte_clk0", "src_pixel_clk0",
+				"shadow_byte_clk0", "shadow_pixel_clk0";
+	qcom,ulps-enabled;
+	qcom,esd-check-enabled;
+	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
+	qcom,mdss-dsi-panel-status-command = [06 01 00 01 00 00 01 0a];
+	qcom,mdss-dsi-panel-status-command-state = "dsi_hs_mode";
+	qcom,mdss-dsi-panel-status-value = <0x9c>;
+	qcom,mdss-dsi-panel-on-check-value = <0x9c>;
+	qcom,mdss-dsi-panel-status-read-length = <1>;
+	qcom,dsi-dyn-clk-enable;
+	qcom,dsi-dyn-clk-list = <732748800 722110592>;
+	qcom,dsi-dyn-clk-type = "constant-fps-adjust-hfp";
+	qcom,mdss-dsi-display-timings {
+		timing@0 {
+			qcom,mdss-dsi-panel-phy-timings = [
+				22 1e 07 08 04 02 04 a0
+				22 1e 07 08 04 02 04 a0
+				22 1e 07 08 04 02 04 a0
+				22 1e 07 08 04 02 04 a0
+				22 17 06 07 04 02 04 a0
+			];
+			qcom,display-topology = <1 0 1>;
+			qcom,default-topology-index = <0>;
+		};
+	};
+
+};

@@ -1,0 +1,59 @@
+&soc {
+	touchscreencfg { /* vivo ts configure */
+	   compatible = "vivo,touchscreen-config";
+	   vivo,ts-product-name="PD1930";
+	   vivo,use-ic-list="NT36525";
+
+	   /*----- function set BEG ---- */
+	   vivo,ts-gloves-mode=<0>;
+	   vivo,ts-large-obj-suppression=<1>;
+	   vivo,ts-dclick-wake=<1>;
+	   vivo,ts-gesture-mode=<1>; /*1=sold in native,2=sold in abroad,3...etc=for custom extensive*/
+	   vivo,ts-custom-gesture=<0>;
+	   vivo,ts-module-id-methods=<2>;/*0=by IC id,1=gpio,2=by LCD ID 3=...etc=for custom extensive*/
+	   vivo,ts-fw-upgrade-lcd-referrence=<0>;
+	   vivo,ts-anti-esd=<1>;
+	   vivo,ts-charger-conn-judge=<1>;
+	   vivo,ts-module-smt-mode=<1>; /* 0=COB,1=COF */
+	   /*----- function set END ---- */
+
+       /* for FW upgrade HW ID check */
+	   /*vivo,ts-module-id1-gpio=<0>;*/
+	   /*vivo,ts-module-id2-gpio=<3>;*/
+	   //vivo,ts-module-id1-gpio=  <&msm_gpio 0 0x0>;
+	   //vivo,ts-module-id2-gpio = <&msm_gpio 3 0x0>;
+
+	    /* id pins used by touchscreen */
+		//pinctrl-names = "ts_id_active","ts_id_disactive";
+		//pinctrl-0 = <&ts_id_active>;
+		//pinctrl-1 = <&ts_id_disactive>;
+
+	};
+
+};
+
+&spi_3 {
+	status = "okay";
+	novatek@0 {
+		compatible = "vivo,ts-spi";
+		reg = <0>; //Same as CS ID
+		status = "okay";
+
+		spi-max-frequency = <9600000>;	//4800000,9600000,15000000,19200000
+		novatek,reset-gpio = <&tlmm 64 0x00>;
+		novatek,irq-gpio = <&tlmm 65 0x2001>;
+		novatek,swrst-n8-addr = <0x01F01A>;
+		 /* 672A, 525B */
+        novatek,swrst-n8-addr-2nd = <0x03F0FE>;
+        //novatek,spi-rd-fast-addr = <0x03F310>;
+		
+		focaltech,reset-gpio = <&tlmm 64 0x00>;
+		focaltech,irq-gpio = <&tlmm 65 0x2002>;
+		focaltech,max-touch-number = <10>;
+		focaltech,display-coords = <0 0 1080 2280>;
+		
+		//ilitek
+		ilitek,reset-gpio = <&tlmm 64 0x00>;
+		ilitek,irq-gpio = <&tlmm 65 0x2002>;
+	};
+};
